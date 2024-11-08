@@ -14,4 +14,3 @@ globals:
   window: true
   Event: true
   customElements: true
-  document: true
