@@ -13,8 +13,6 @@ const style = css`
     position: relative;
     overflow: hidden;
   }
-  ha-card.sections {
-  }
   ha-card > div {
     padding: 0px 16px 16px 16px;
   }
