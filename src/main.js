@@ -150,11 +150,29 @@ class MiniGraphCard extends LitElement {
     return this.sections && layout.grid_rows <= 3 ? 'small' : '';
   }
 
+  getHeaderRows() {
+    return ((this.config.show.name || this.config.show.icon || this.config.show.state) ? 1 : 0)
+      + ((this.config.show.extrema || this.config.show.average) ? 1 : 0);
+  }
+
   getGraphHeightSections() {
     const layout = this.getCurrentLayout();
     const headerRows = this.getHeaderRows() + (this.getLayoutSize(layout) === '' ? 1 : 0);
 
     return Math.max(layout.grid_rows - headerRows, 1);
+  }
+
+  getLayoutOptions() {
+    return {
+      grid_rows: 1 + this.getHeaderRows(),
+      grid_columns: 2,
+      grid_min_rows: 1 + this.getHeaderRows(),
+      grid_min_columns: 2,
+    };
+  }
+
+  getCardSize() {
+    return 3;
   }
 
   connectedCallback() {
@@ -1057,24 +1075,6 @@ class MiniGraphCard extends LitElement {
         if (!this.updating) this.updateData();
       }, interval * ONE_HOUR);
     }
-  }
-
-  getHeaderRows() {
-    return ((this.config.show.name || this.config.show.icon || this.config.show.state) ? 1 : 0)
-      + ((this.config.show.extrema || this.config.show.average) ? 1 : 0);
-  }
-
-  getLayoutOptions() {
-    return {
-      grid_rows: 1 + this.getHeaderRows(),
-      grid_columns: 2,
-      grid_min_rows: 1 + this.getHeaderRows(),
-      grid_min_columns: 2,
-    };
-  }
-
-  getCardSize() {
-    return 3;
   }
 }
 
