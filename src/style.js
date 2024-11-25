@@ -241,6 +241,7 @@ const style = css`
     display: none;
   }
   .graph {
+    flex: auto;
     align-self: flex-end;
     box-sizing: border-box;
     display: flex;
@@ -248,18 +249,18 @@ const style = css`
     margin-top: auto;
     width: 100%;
   }
-  .sections .graph {
-    position: absolute;
-    bottom: 0;
-  }
   .graph__container {
     display: flex;
     flex-direction: row;
     position: relative;
+    height: 100%;
   }
   .graph__container__svg {
     cursor: default;
-    flex: 1;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
   }
   svg {
     overflow: hidden;
@@ -347,6 +348,7 @@ const style = css`
     pointer-events: none;
     top: 0; bottom: 0;
     opacity: .75;
+    z-index: 1;
   }
   .graph__labels > span {
     cursor: pointer;

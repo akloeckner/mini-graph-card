@@ -151,7 +151,9 @@ class MiniGraphCard extends LitElement {
   }
 
   getHeaderRows() {
-    return ((this.config.show.name || this.config.show.icon || this.config.show.state) ? 1 : 0)
+    return 0
+      + ((this.config.show.name || this.config.show.icon) ? 1 : 0)
+      + ((this.config.show.state) ? 1 : 0)
       + ((this.config.show.extrema || this.config.show.average) ? 1 : 0);
   }
 
@@ -572,7 +574,9 @@ class MiniGraphCard extends LitElement {
   renderSvg() {
     const { height } = this.config;
     return svg`
-      <svg width='100%' height=${height !== 0 || this.sections ? '100%' : 0} viewBox='0 0 ${this.graphWidth} ${this.graphHeight}'
+      <svg width='100%' height=${height !== 0 || this.sections ? '100%' : 0}
+        viewBox='0 0 ${this.graphWidth} ${this.graphHeight}'
+        preserveAspectRatio='none'
         @click=${e => e.stopPropagation()}>
         <g>
           <defs>
